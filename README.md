@@ -1,6 +1,6 @@
 # termSwitcher.vim
 
-Quickly open and close Nvim_terminal_emulator.  
+Quickly open and close [Nvim_terminal_emulator](https://neovim.io/doc/user/nvim_terminal_emulator.html).
 
 ![both2](https://github.com/keiyakeiya/termSwitcher.vim/assets/75249966/13a444c9-389a-434b-91a2-3cab3509d466)
 
