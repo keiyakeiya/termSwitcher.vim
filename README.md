@@ -1,40 +1,54 @@
 # termSwitcher.vim
 
 Quickly open and close neovim built-in terminal.  
-![both_tterm_vtterm_trimed](https://github.com/keiyakeiya/termSwitcher.vim/assets/75249966/dad10bf6-f15f-47b6-85c6-b6be7e587b89)
+
+![both2](https://github.com/keiyakeiya/termSwitcher.vim/assets/75249966/13a444c9-389a-434b-91a2-3cab3509d466)
 
 ## Feature
 
 - Open or close the terminal window down or right.
 - This plugin uses only one terminal buffer.
 
-## Install
+## Installation
 
 You can install this plugin using your favorite package manager.  
-For example, if you use dein, execute `call dein#add('keiyakeiya/termSwitcher.vim')`
+For example, if you use dein, execute
+
+```:vim
+call dein#add('keiyakeiya/termSwitcher.vim')
+```
 
 ## Usage
 
 Open/Close bottom terminal window  
-`:Tterm`
-![tterm_trimed](https://github.com/keiyakeiya/termSwitcher.vim/assets/75249966/e1da9167-2029-4203-a929-04eab345eb0d)
 
+```:vim
+:Tterm
+```
+
+![tterm2](https://github.com/keiyakeiya/termSwitcher.vim/assets/75249966/845a3210-6c43-4c78-bb82-4be28ba854ab)
+
+<br>
 Open/Close right terminal window  
-`:VTterm`
-![vtterm_trimed](https://github.com/keiyakeiya/termSwitcher.vim/assets/75249966/82658e20-fe34-46de-81de-6fbde44192f8)
+
+```:vim
+:Vtterm
+```
+
+![vtterm2](https://github.com/keiyakeiya/termSwitcher.vim/assets/75249966/d8802b90-12fc-4cd2-9114-88b232e0f2cb)
 
 ### Key mapping example
 
 It's convenient to assign a keymap to a command.
-The following example assigns `Tterm` to <c-[> in normal mode.
+The following example assigns `Tterm` to `<c-t>` in normal mode.
 
 ```:vimscript
-nnoremap <C-[> :Tterm<CR>
+nnoremap <C-t> :Tterm<CR>
 ```
 
 ## Configuration
 
-The default values for terminal window height and width are 10 and 65 respectively.
+The default values for terminal window height and width are 10 and 65 respectively.  
 If you want to change them, set the variables `g:termSwitcherHeight` and `g:termSwitcherWidth` like below.
 
 ```:vimscript
