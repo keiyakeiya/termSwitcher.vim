@@ -1,0 +1,97 @@
+*termSwitcher.txt*	a summary
+
+Version : 1.0
+Author  : Keiy
+License : MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+==============================================================================
+CONTENTS					*termSwitcher-contents*
+
+INTRODUCTION			|termSwitcher-introduction|
+USAGE				|termSwitcher-usage|
+INTERFACE			|termSwitcher-interface|
+  VARIABLES			  |termSwitcher-variables|
+  COMMANDS			  |termSwitcher-commands|
+  FUNCTIONS			  |termSwitcher-functions|
+TODO				|termSwitcher-todo|
+CHANGELOG			|termSwitcher-changelog|
+
+
+==============================================================================
+INTRODUCTION					*termSwitcher-introduction*
+
+*termSwitcher* is a Vim plugin 
+
+Latest version:
+https://github.com/keiyakeiya/termSwitcher.vim
+
+==============================================================================
+USAGE						*termSwitcher-usage*
+
+
+
+==============================================================================
+INTERFACE					*termSwitcher-interface*
+
+------------------------------------------------------------------------------
+VARIABLES					*termSwitcher-variables*
+
+g:termSwitcherHeight				*g:termSwitcherHeight*
+  default value: 10
+  Terminal window height.
+
+
+g:termSwitcherWidth				*g:termSwitcherWidth*
+  default value: 65
+  Terminal window width.
+
+
+------------------------------------------------------------------------------
+COMMANDS					*termSwitcher-commands*
+
+:Tterm						*:Tterm*
+  Toggle terminal window (bottom).
+
+
+:Vtterm						*:Vtterm*
+  Toggle terminal window (right).
+
+
+------------------------------------------------------------------------------
+FUNCTIONS					*termSwitcher-functions*
+
+termSwitcher#toggleTerm({pos})			*termSwitcher#toggleTerm()*
+  Toggle terminal window.
+  If {pos} is 1, open/close terminal on bottom window.
+  If {pos} is 0, open/close terminal on right window.
+
+
+==============================================================================
+TODO						*termSwitcher-todo*
+
+
+
+==============================================================================
+CHANGELOG					*termSwitcher-changelog*
+
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:
