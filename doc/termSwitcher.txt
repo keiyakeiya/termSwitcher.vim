@@ -83,6 +83,13 @@ termSwitcher#toggleTerm({pos})			*termSwitcher#toggleTerm()*
   If {pos} is 1, open/close terminal on bottom window.
   If {pos} is 0, open/close terminal on right window.
 
+termSwitcher#openTerm({pos})			*termSwitcher#openTerm()*
+  Open terminal window.
+  If {pos} is 1, open terminal on bottom window.
+  If {pos} is 0, open terminal on right window.
+
+termSwitcher#closeTerm()			*termSwitcher#closeTerm()*
+  Close terminal window.
 
 ==============================================================================
 TODO						*termSwitcher-todo*

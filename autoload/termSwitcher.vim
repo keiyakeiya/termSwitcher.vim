@@ -17,7 +17,7 @@ function! s:checkBuffer() abort
   return l:have
 endfunction
 
-function! s:openTerm(pos) abort
+function! termSwitcher#openTerm(pos) abort
   " Open terminal.
   " pos: 1:sp, 0:vsp.
   let l:bufNum = s:checkBuffer()
@@ -39,7 +39,7 @@ function! s:openTerm(pos) abort
   endif
 endfunction
 
-function! s:closeTerm() abort
+function! termSwitcher#closeTerm() abort
   " Close terminal.
   if bufwinid(s:bufferName) != -1
     " If current tab has terminal window, close it.
@@ -62,9 +62,9 @@ function! termSwitcher#toggleTerm(pos) abort
   " Toggle terminal window.
   if bufwinid(s:bufferName) != -1
     " If current tab has terminal window, close it.
-    call s:closeTerm()
+    call termSwitcher#closeTerm()
   else
   " If terminal window is closed, open it.
-    call s:openTerm(a:pos)
+    call termSwitcher#openTerm(a:pos)
   endif
 endfunction
