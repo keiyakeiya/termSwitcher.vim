@@ -2,9 +2,14 @@ let s:bufferName = 'termSwitcherBuf'
 " Buffer name.
 let g:winnr_prev = winnr()
 
-let g:termSwitcherHeight = get(g:, 'termSwitcherHeight ', 10)
+let g:openedPosition = -1
+let g:termSwitcherHeight = get(g:, 'termSwitcherHeight', 10)
 let g:termSwitcherWidth = get(g:, 'termSwitcherWidth', 65)
-" If height and width was not defined, apply default value.
+" If height and width was not defined, assign default value.
+
+" let g:termSwitcherHeightResized = get(g:, 'termSwitcherHeightResized ', g:termSwitcherHeight)
+" let g:termSwitcherWidthResized  = get(g:, 'termSwitcherWidthResized ', g:termSwitcherWidth)
+" " If terminal has not resized, assign default value.
 
 function! s:checkBuffer() abort
   " Check the existence of terminal buffer made by this plugin.
@@ -37,6 +42,7 @@ function! termSwitcher#openTerm(pos) abort
     execute a:pos? 'wincmd J' : 'wincmd L'
     execute a:pos? 'resize '.g:termSwitcherHeight : 'vertical resize '.g:termSwitcherWidth
   endif
+  let g:openedPosition = a:pos
 endfunction
 
 function! termSwitcher#closeTerm() abort
@@ -46,8 +52,14 @@ function! termSwitcher#closeTerm() abort
     " Save current winnr.
     let l:winnr_current = winnr() 
     let l:winnr_term = bufwinnr(s:bufferName)
+    if g:openedPosition == 1
+      let g:termSwitcherHeight = winheight(l:winnr_term)
+    elseif g:openedPosition == 0
+      let g:termSwitcherWidth = winwidth(l:winnr_term)
+    endif
     execute(l:winnr_term.'wincmd w')
     execute('close')
+    
     if l:winnr_current != l:winnr_term
       " If cursor was not on the terminal window, back cursor to previous window.
       execute(l:winnr_current.'wincmd w')
