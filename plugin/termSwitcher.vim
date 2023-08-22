@@ -3,8 +3,8 @@ if exists('g:loaded_termSwitcher')
 endif
 let g:loaded_termSwitcher = 1
 
-command! Tterm call termSwitcher#toggleTerm(1)
+command! Tterm call termSwitcher#toggleTerm(1, 'termSwitcherBuf')
 " Toggle terminal window (bottom).
 
-command! Vtterm call termSwitcher#toggleTerm(0)
+command! Vtterm call termSwitcher#toggleTerm(0, 'termSwitcherBuf')
 " Toggle terminal window (right).

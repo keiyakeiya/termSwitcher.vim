@@ -1,4 +1,4 @@
-let s:bufferName = 'termSwitcherBuf'
+" let s:bufferName = 'termSwitcherBuf'
 " Buffer name.
 let g:winnr_prev = winnr()
 
@@ -11,28 +11,28 @@ let g:termSwitcherWidth = get(g:, 'termSwitcherWidth', 65)
 " let g:termSwitcherWidthResized  = get(g:, 'termSwitcherWidthResized ', g:termSwitcherWidth)
 " " If terminal has not resized, assign default value.
 
-function! s:checkBuffer() abort
+function! s:checkBuffer(bufferName) abort
   " Check the existence of terminal buffer made by this plugin.
   " If have, return bufnr.
   " If does not have, return 0.
   let l:have = 0
-  if bufnr(s:bufferName) != -1
-    let l:have = bufnr(s:bufferName)
+  if bufnr(a:bufferName) != -1
+    let l:have = bufnr(a:bufferName)
   endif
   return l:have
 endfunction
 
-function! termSwitcher#openTerm(pos) abort
+function! termSwitcher#openTerm(pos, bufferName) abort
   " Open terminal.
   " pos: 1:sp, 0:vsp.
-  let l:bufNum = s:checkBuffer()
+  let l:bufNum = s:checkBuffer(a:bufferName)
   " Save current winnr.
   let g:winnr_prev = winnr()
   if l:bufNum == 0
     " If there is no buffer, make new one.
     execute('split')
     execute('terminal')
-    execute('f ' . s:bufferName)
+    execute('f ' . a:bufferName)
     execute a:pos? 'wincmd J' : 'wincmd L'
     execute a:pos? 'resize '.g:termSwitcherHeight : 'vertical resize '.g:termSwitcherWidth
   else
@@ -45,13 +45,13 @@ function! termSwitcher#openTerm(pos) abort
   let g:openedPosition = a:pos
 endfunction
 
-function! termSwitcher#closeTerm() abort
+function! termSwitcher#closeTerm(bufferName) abort
   " Close terminal.
-  if bufwinid(s:bufferName) != -1
+  if bufwinid(a:bufferName) != -1
     " If current tab has terminal window, close it.
     " Save current winnr.
     let l:winnr_current = winnr() 
-    let l:winnr_term = bufwinnr(s:bufferName)
+    let l:winnr_term = bufwinnr(a:bufferName)
     if g:openedPosition == 1
       let g:termSwitcherHeight = winheight(l:winnr_term)
     elseif g:openedPosition == 0
@@ -70,13 +70,13 @@ function! termSwitcher#closeTerm() abort
   endif
 endfunction
 
-function! termSwitcher#toggleTerm(pos) abort
+function! termSwitcher#toggleTerm(pos, bufferName) abort
   " Toggle terminal window.
-  if bufwinid(s:bufferName) != -1
+  if bufwinid(a:bufferName) != -1
     " If current tab has terminal window, close it.
-    call termSwitcher#closeTerm()
+    call termSwitcher#closeTerm(a:bufferName)
   else
   " If terminal window is closed, open it.
-    call termSwitcher#openTerm(a:pos)
+    call termSwitcher#openTerm(a:pos, a:bufferName)
   endif
 endfunction
